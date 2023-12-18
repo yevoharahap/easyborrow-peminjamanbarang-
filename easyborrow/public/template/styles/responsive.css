@@ -1,0 +1,165 @@
+
+@media screen and (max-width: 768px) {
+  header {
+      padding: 16px; 
+  }
+
+  .header img {
+      height: 40px; 
+      margin-right: 5px; 
+  }
+
+  .login-button {
+      margin-left: 10px; 
+      margin-right: 10px; 
+  }
+
+  .item_detail main {
+    flex: 1;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  header {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .header img {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+
+  .nav__list {
+      flex-direction: row;
+      gap: 10px;
+  }
+
+  .login-button {
+      margin-top: 10px;
+  }
+
+  @media screen and (max-width: 768px) {
+    #hero_element {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #hero_element main img {
+        height: auto;
+    }
+
+    #hero_element aside h1 {
+        font-size: 36px;
+        margin-top: 40px;
+    }
+
+    #hero_element aside h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+  #joinUs {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  #joinUs main,
+  #joinUs aside {
+      margin:auto;
+      max-width: none;
+  }
+
+  #joinUs img {
+      margin-bottom: 20px;
+  }
+
+  #joinUs .description {
+      width: auto;
+      padding: 20px;
+  }
+
+  #joinUs .description h2 {
+      font-size: 20px;
+  }
+  #joinUs aside h2 {
+    margin-top: 20px;
+  }
+
+  .item_detail {
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 40px;
+  }
+
+  .item_detail main,
+  .item_detail aside {
+    margin-top: 20px;
+  }
+
+  .item_detail main img {
+    max-width: 100%;
+  }
+}
+
+} 
+@media screen and (min-width: 500px) {
+  button#menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 499px) {    
+  .nav {
+    z-index: 10;
+    background-color: #fff;
+    width: 300px;
+    position: absolute;
+
+    -webkit-transform: translate(-300px, 0);
+    transform: translate(-300px, 0);
+
+    transition: transform 0.3s ease;
+  }
+
+  .open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  .nav__list {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav__item {
+    margin-top: 5px;
+    display: list-item;
+    border-bottom: 1px solid #e0e0e0;
+    width: 100%;
+    text-align: left;
+  }
+
+  #drawer {
+    position: fixed; 
+    top: 60px; 
+    left: 0; 
+    width: 250px;
+    height: auto;
+    background-color: #fff;
+    z-index: 998; 
+    transition: right 0.3s;
+  }
+  .login-button {
+    text-align: center;
+    display: block; 
+  }
+}
+
+
