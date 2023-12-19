@@ -20,7 +20,7 @@
                         <p class="auth-subtitle text-center mb-3 fs-5">Masuk
                             dengan data yang Anda masukkan saat registrasi.</p>
 
-                        <form method="POST" action="{{ route('login.store') }}">
+                        <form method="POST" action="{{ route('home') }}">
                             @csrf
                             <div class="mb-3">
                                 <div class="form-group position-relative has-icon-left">

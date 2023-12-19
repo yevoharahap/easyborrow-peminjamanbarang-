@@ -16,14 +16,12 @@ class registerController extends Controller
         $request->validate([
             'nama_user' => 'required|string|max:255',
             'email' => 'required|email|unique:user',
-            'role' => 'required|string',
             'password' => 'nullable|min:6',
         ]);
 
         $data = [
             'nama_user' => $request->nama_user,
             'email' => $request->email,
-            'role' => $request->role,
             'password' => bcrypt($request->password),
         ];
 
