@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\user;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,12 +16,12 @@ class UserController extends Controller
         $jumlahbaris = 100;
 
         if (strlen($katakunci)) {
-            $data = User::where('nama_user', 'like', "%" . $katakunci . "%")
+            $data = user::where('nama_user', 'like', "%" . $katakunci . "%")
                 ->orWhere('id_user', 'like', "%" . $katakunci . "%")
                 ->orWhere('email', 'like', "%" . $katakunci . "%")
                 ->paginate($jumlahbaris);
         } else {
-            $data = User::orderBy('id_user', 'desc')->paginate($jumlahbaris);
+            $data = user::orderBy('id_user', 'desc')->paginate($jumlahbaris);
         }
 
         return view('user.index')->with('data', $data);
@@ -52,7 +52,7 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
         ];
 
-        User::create($data);
+        user::create($data);
 
         return redirect()->route('user.index');
     }
@@ -84,7 +84,7 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
         ];
 
-        user::where('id_user', $id_user)->update($data);
+        User::where('id_user', $id_user)->update($data);
 
         return redirect()->route('user.index');
     }
