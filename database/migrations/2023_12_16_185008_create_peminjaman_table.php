@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date('tanggal_pengembalian')->nullable();
             $table->string('status_peminjaman')->default('dipinjam');
 
-            $table->foreign('id_user')->references('id')->on('user')->onDelete('cascade');
-            $table->foreign('id_barang')->references('id')->on('barang')->onDelete('cascade');
+            $table->foreign('id_user')->references('id_user')->on('user')->onDelete('cascade');
+            $table->foreign('id_barang')->references('id_barang')->on('barang')->onDelete('cascade');
         });
     }
 
