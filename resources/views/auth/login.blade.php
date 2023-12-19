@@ -20,7 +20,7 @@
                         <p class="auth-subtitle text-center mb-3 fs-5">Masuk
                             dengan data yang Anda masukkan saat registrasi.</p>
 
-                        <form method="POST" action="{{ route('home') }}">
+                        {{-- <form method="POST" action="{{ route('home') }}"> --}}
                             @csrf
                             <div class="mb-3">
                                 <div class="form-group position-relative has-icon-left">
@@ -48,8 +48,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <button class="btn btn-primary btn-block btn-lg shadow-lg mt-4">Masuk</button>
-                        </form>
+                            <a href="{{ url('/home') }}"><button class="btn btn-primary btn-block btn-lg shadow-lg mt-4"> Masuk</button></a>
+                        {{-- </form> --}}
                         <div class="text-center mt-3 text-lg fs-6">
                             <p class="text-gray-600">Tidak memiliki akun? <a href="{{ url('/register') }}"
                                     class="font-bold">Buat Akun</a>.</p>
