@@ -16,12 +16,12 @@ class barangController extends Controller
             $jumlahbaris = 100;
 
             if (strlen($katakunci)) {
-                $data = Barang::where('nama_barang', 'like', "%" . $katakunci . "%")
+                $data = barang::where('nama_barang', 'like', "%" . $katakunci . "%")
                     ->orWhere('id_barang', 'like', "%" . $katakunci . "%")
                     ->orWhere('kondisi', 'like', "%" . $katakunci . "%")
                     ->paginate($jumlahbaris);
             } else {
-                $data = Barang::orderBy('id_barang', 'desc')->paginate($jumlahbaris);
+                $data = barang::orderBy('id_barang', 'desc')->paginate($jumlahbaris);
             }
 
             return view('barang.index')->with('data', $data);
@@ -49,7 +49,7 @@ class barangController extends Controller
             'kondisi' => $request->kondisi,
         ];
 
-        Barang::create($data);
+        barang::create($data);
         return redirect()->to('barang');
     }
 

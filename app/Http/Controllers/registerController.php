@@ -27,7 +27,7 @@ class registerController extends Controller
             'password' => bcrypt($request->password),
         ];
 
-        User::create($data);
+        user::create($data);
 
         return redirect()->route('login');
     }

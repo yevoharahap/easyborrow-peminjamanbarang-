@@ -12,10 +12,10 @@ class homeController extends Controller
     public function index()
     {
         return view('dashboard.dashboard',[
-            'peminjaman'=> Peminjaman::count(),
+            'peminjaman'=> peminjaman::count(),
             'barang'=>barang::count(),
-            'user'=>User::count(),
-            'pinjams'=>Peminjaman::all(),
+            'user'=>user::count(),
+            'pinjams'=>peminjaman::all(),
             'start'=> 1
 
         ]);

@@ -18,7 +18,7 @@ class peminjamanController extends Controller
             $jumlahbaris = 100;
 
             if (strlen($katakunci)) {
-                $data = Peminjaman::where('id_peminjaman', 'like', "%" . $katakunci . "%")
+                $data = peminjaman::where('id_peminjaman', 'like', "%" . $katakunci . "%")
                     ->orWhereHas('user', function ($query) use ($katakunci) {
                         $query->where('nama_user', 'like', "%" . $katakunci . "%");
                     })
@@ -27,7 +27,7 @@ class peminjamanController extends Controller
                     })
                     ->paginate($jumlahbaris);
             } else {
-                $data = Peminjaman::orderBy('id_peminjaman', 'desc')->paginate($jumlahbaris);
+                $data = peminjaman::orderBy('id_peminjaman', 'desc')->paginate($jumlahbaris);
             }
 
             return view('peminjaman.index')->with('data', $data);
@@ -71,10 +71,10 @@ class peminjamanController extends Controller
 
 
             peminjaman::create($data);
-            $barang = Barang::find($request->id_barang);
+            $barang = barang::find($request->id_barang);
             $barang->tersedia= 0 ;
             $id = $barang->id_barang;
-            Barang::where('id_barang', $id)->Update(['tersedia'=>$barang->tersedia]);
+            barang::where('id_barang', $id)->Update(['tersedia'=>$barang->tersedia]);
             return redirect()->to('peminjaman');
 
 
@@ -85,9 +85,9 @@ class peminjamanController extends Controller
      */
     public function edit($id_peminjaman)
     {
-        $data = Peminjaman::where('id_peminjaman', $id_peminjaman)->first();
-        $users = User::all(); // Assuming you have a User model
-        $barang = Barang::all(); // Assuming you have a Barang model
+        $data = peminjaman::where('id_peminjaman', $id_peminjaman)->first();
+        $users = user::all(); // Assuming you have a User model
+        $barang = barang::all(); // Assuming you have a Barang model
 
         return view('peminjaman.edit', compact('data', 'users', 'barang'));
     }
@@ -128,14 +128,14 @@ class peminjamanController extends Controller
 
     public function pengembalian(string $id_peminjaman)
     {
-        $peminjaman = Peminjaman::where('id_peminjaman', $id_peminjaman) ->first();
+        $peminjaman = peminjaman::where('id_peminjaman', $id_peminjaman) ->first();
         $peminjaman->status_peminjaman = "Dikembalikan";
         // dd($peminjaman);
-        Peminjaman::where('id_peminjaman', $peminjaman->id_peminjaman)->update(['Status_peminjaman'=>$peminjaman->status_peminjaman]);
-        $barang = Barang::where('id_barang', $peminjaman->id_barang)->first();
+        peminjaman::where('id_peminjaman', $peminjaman->id_peminjaman)->update(['Status_peminjaman'=>$peminjaman->status_peminjaman]);
+        $barang = barang::where('id_barang', $peminjaman->id_barang)->first();
         $barang->tersedia = 1;
         // dd($barang);
-        Barang::where('id_barang', $barang->id_barang)->update(['tersedia'=>$barang->tersedia]);
+        barang::where('id_barang', $barang->id_barang)->update(['tersedia'=>$barang->tersedia]);
         return redirect()->route('peminjaman.index');
     }
 }
