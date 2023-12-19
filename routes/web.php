@@ -6,6 +6,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\peminjamanController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\userController;
+use App\Http\Controllera\homeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,7 @@ Route::post('/logout', [loginController::class, 'logout'])->name('logout');
 Route::get('/register',[registerController::class, 'index'])->name('register');
 Route::post('/regist', [registerController::class, 'store'])->name('register.store');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\homeController::class, 'index'])->name('home');
 
 Route::resource('user', userController::class);
 Route::resource('barang', barangController::class);
